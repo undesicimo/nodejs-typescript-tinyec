@@ -37,3 +37,8 @@ docker compose up -d
     - `docker compose up -d postgres`
   - アプリケーションを立ち上げる
     - `npm run exec` 
+- リクエストの投げ方
+  - アイテム一覧の取得
+    - curl http://localhost:8080/items -H "content-type: application/json"
+  - 金額計算
+    - curl -X POST http://localhost:8080/carts/calculate -H "content-type: application/json" -d '{"itemIds": [1,2,3], "coupon" : "X"}'
