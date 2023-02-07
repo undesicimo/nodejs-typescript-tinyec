@@ -2,28 +2,28 @@ import { CartService } from '../cart/service';
 
 const cartservice = new CartService();
 
-
-
 describe('クーポン割引test', () => {
     it('クーポンがあない場合、10%の割引が効かない', () => {
-        const result = cartservice.calculate(
-            [
-                { id: 2, name: 'ウェットティッシュ', price: 200 },
-                { id: 1, name: 'ティッシュ', price: 100 },
-            ],
-            { coupon: '' }
-        );
+        const cartItems = [
+            { id: 2, name: 'ウェットティッシュ', price: 200 },
+            { id: 1, name: 'ティッシュ', price: 100 },
+        ];
+
+        const coupon = { coupon: '' };
+
+        const result = cartservice.calculate(cartItems, coupon);
         expect(result.totalPrice).toBe(300);
     });
 
     it('クーポンがある場合、10%の割引が効く', () => {
-        const result = cartservice.calculate(
-            [
-                { id: 2, name: 'ウェットティッシュ', price: 200 },
-                { id: 1, name: 'ティッシュ', price: 100 },
-            ],
-            { coupon: 'XXXXX' }
-        );
+        const cartItems = [
+            { id: 2, name: 'ウェットティッシュ', price: 200 },
+            { id: 1, name: 'ティッシュ', price: 100 },
+        ];
+
+        const coupon = { coupon: 'XXXXX' };
+
+        const result = cartservice.calculate(cartItems, coupon);
         expect(result.totalPrice).toBe(270);
     });
 });
