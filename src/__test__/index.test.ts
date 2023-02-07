@@ -42,3 +42,22 @@ describe('POST /carts/calculate カート内容金額計算', () => {
         expect(res.body.totalPrice).toEqual(540);
     });
 });
+
+describe('invalid テストケース', () => {
+    it('GET 存在していないエンドポイント 404 返す', async () => {
+        //存在しないエンドポイント
+        const res = await request(app).get('/ite');
+        expect(res.statusCode).toEqual(404);
+    });
+    it('存在しないアイテムを計算すると、statuscode 400とメッセージが返ってくる ', async () => {
+        // id 一個多く
+        const cartItems = { itemIds: [1, 2, 3, 4], coupon: 'XXXXX' };
+
+        const res = await request(app)
+            .post('/carts/calculate')
+            .send(cartItems)
+            .set('content-type', 'application/json');
+        expect(res.body.message).toEqual('Not Found Error');
+        expect(res.statusCode).toEqual(400);
+    });
+});
