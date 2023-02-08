@@ -1,11 +1,7 @@
-import express, { json } from 'express';
-import router from '../routes';
 import request from 'supertest';
+import { app } from '../app';
 
-//app モジュール実装
-const app = express();
-app.use(json());
-app.use('/', router);
+
 
 describe('GET "/items" アイテム一覧test', () => {
     const cartData = [
