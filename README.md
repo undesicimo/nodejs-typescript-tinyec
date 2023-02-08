@@ -42,3 +42,14 @@ docker compose up -d
     - curl http://localhost:8080/items -H "content-type: application/json"
   - 金額計算
     - curl -X POST http://localhost:8080/carts/calculate -H "content-type: application/json" -d '{"itemIds": [1,2,3], "coupon" : "X"}'
+    
+### テスト実行方法
+ターミナルにて以下を入力
+
+```
+$ npm run test //テスト実行する。
+```
+また、カバレッジを合わせて出力の際、以下をターミナルにて実行
+```
+$ npm run test -- --coverage
+```
