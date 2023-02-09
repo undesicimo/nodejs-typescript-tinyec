@@ -1,4 +1,4 @@
-import { CartService } from '../cart/service';
+import { CartService } from '../../../cart/service';
 
 const cartservice = new CartService();
 
