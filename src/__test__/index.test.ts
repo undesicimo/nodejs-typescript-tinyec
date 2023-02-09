@@ -7,7 +7,6 @@ describe('GET "/items" アイテム一覧 test', () => {
     it('request時、正常なエンドポイントは、status-code 200が返ってくる ', async () => {
         const res = await endpointRequest.get('/items');
         expect(res.statusCode).toEqual(200);
-        console.log(res)
     });
     it('request時1件以上のデータが返ってくる ', async () => {
         const res = await endpointRequest.get('/items');
