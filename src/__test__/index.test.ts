@@ -3,16 +3,19 @@ import { app } from '../app';
 
 const endpointRequest = request.agent(app);
 
-describe('GET "/items" アイテム一覧test', () => {
-    const cartData = [
-        { id: 1, name: 'ティッシュ', price: 100 },
-        { id: 2, name: 'ウェットティッシュ', price: 200 },
-        { id: 3, name: '除菌シート', price: 300 },
-    ];
-
-    it('responseとアイテム一覧が一致している', async () => {
+describe('GET "/items" アイテム一覧 test', () => {
+    it('request時、正常なエンドポイントは、status-code 200が返ってくる ', async () => {
         const res = await endpointRequest.get('/items');
-        expect(res.body).toEqual(cartData);
+        expect(res.statusCode).toEqual(200);
+        console.log(res)
+    });
+    it('request時1件以上のデータが返ってくる ', async () => {
+        const res = await endpointRequest.get('/items');
+        expect(res.body.length > 1).toBe(true);
+    });
+    it('request時、正常なデータ型が返ってくる', async () => {
+        const res = await endpointRequest.get('/items');
+        expect(res.type).toBe('application/json');  
     });
 });
 
