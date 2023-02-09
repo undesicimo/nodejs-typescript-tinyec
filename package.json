@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:integration": " jest src/__test__/integration",
+    "test:unit": " jest src/__test__/unit",
     "build": "tsc",
     "exec": "ts-node src/index.ts"
   },
