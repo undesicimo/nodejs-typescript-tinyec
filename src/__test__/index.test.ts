@@ -10,7 +10,7 @@ describe('GET "/items" アイテム一覧 test', () => {
     });
     it('request時1件以上のデータが返ってくる ', async () => {
         const res = await endpointRequest.get('/items');
-        expect(res.body.length > 1).toBe(true);
+        expect(res.body.length).toBeGreaterThanOrEqual(1)
     });
     it('request時、正常なデータ型が返ってくる', async () => {
         const res = await endpointRequest.get('/items');
