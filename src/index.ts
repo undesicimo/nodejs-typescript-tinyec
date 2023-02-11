@@ -1,10 +1,4 @@
-import express, { json } from 'express';
-import router from './routes';
-
-
-const app = express();
-app.use(json());
-app.use('/', router);
+import { app } from "./app";
 
 const port = process.env.PORT ? Number(process.env.PORT) : 8080;
 app.listen(port, () => {

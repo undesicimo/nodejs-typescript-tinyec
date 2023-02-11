@@ -25,7 +25,7 @@ export class CartService {
   ): CalculateResult {
     const discountPrice = (() => {
       if (couponCode === 'XXXXX') {
-        cartPrice.totalPrice * 0.1;
+        return cartPrice.totalPrice * 0.1;
       }
       return 0;
     })();
